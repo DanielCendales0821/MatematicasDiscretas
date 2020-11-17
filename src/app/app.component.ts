@@ -21,8 +21,12 @@ export class AppComponent implements OnInit {
   public relacionVertical: any[];
   public diagonal: any = [];
   public vertical: any = [];
+  public reflexiva:string;
+
   constructor(private readonly formBuilder: FormBuilder) {
     this.tamanovector = `El tamaño del array es de:`;
+    this.reflexiva = '';
+    
   }
 
   ngOnInit() {
@@ -61,6 +65,8 @@ export class AppComponent implements OnInit {
   public relaciones() {
     this.verificarRelacionVertical();
     this.verificarRelacionDiagonal();
+    this.relacionReflexiva();
+    this.relacionIrreflexiva();
   }
 
   verificarRelacionDiagonal() {
@@ -69,6 +75,35 @@ export class AppComponent implements OnInit {
       const element = this.matrizArmada[i].filas - 1;
       const data = this.matrizArmada[i].columnas[element];
       this.diagonal.push(data);
+    }
+  }
+
+  relacionReflexiva() {
+    const data =[];
+    for (let i = 0; i < this.diagonal.length; i++) {
+      if(this.diagonal[i] === 1){
+        data.push(true)
+      } else {
+        data.push(false)
+      }
+    }
+    const ele = data.filter(x => x === false);
+    if(ele.length === 0){
+      this.reflexiva = 'Reflexiva';
+    }
+  }
+  relacionIrreflexiva(){
+    const data =[];
+    for (let i = 0; i < this.diagonal.length; i++) {
+      if(this.diagonal[i] === 0){
+        data.push(true)
+      } else {
+        data.push(false)
+      }
+    }
+    const ele = data.filter(x => x === false);
+    if(ele.length === 0){
+      this.reflexiva = 'Irreflexiva';
     }
   }
 
