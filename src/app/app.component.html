@@ -35,8 +35,11 @@
       <div class="col">
         <h5>{{tamanovector}}</h5>
         <div>
-
+          <button type="button" class="btn btn-primary" (click)="relaciones()">Relaciones</button>
         </div>
+        <h5> Diagonal {{returnValueRelacionDiagonal()}}</h5>
+        <h5>Vertical {{returnValueRelacionVertical()}}</h5>
+
       </div>
     </div>
     <div style="margin-top: 100px;">

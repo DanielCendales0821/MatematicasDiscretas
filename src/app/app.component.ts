@@ -18,6 +18,9 @@ export class AppComponent implements OnInit {
   public formGroup: FormGroup;
   public matrizArmada: Array<any>;
   public primeraParte: any;
+  public relacionVertical: any[];
+  public diagonal: any = [];
+  public vertical: any = [];
   constructor(private readonly formBuilder: FormBuilder) {
     this.tamanovector = `El tamaño del array es de:`;
   }
@@ -54,6 +57,35 @@ export class AppComponent implements OnInit {
     this.matrizArmada = arr;
     //tamaño vector
     this.tamanovector = `El tamaño del array es de: ${filas} x ${columnas} = ${filas * columnas}`;
+  }
+  public relaciones() {
+    this.verificarRelacionVertical();
+    this.verificarRelacionDiagonal();
+  }
+
+  verificarRelacionDiagonal() {
+    this.diagonal = [];
+    for (let i = 0; i < this.matrizArmada.length; i++) {
+      const element = this.matrizArmada[i].filas - 1;
+      const data = this.matrizArmada[i].columnas[element];
+      this.diagonal.push(data);
+    }
+  }
+
+  verificarRelacionVertical() {
+    this.vertical = [];
+    for (let i = 0; i < this.matrizArmada.length; i++) {
+      const data = this.matrizArmada[i].columnas[0];
+      this.vertical.push(data);
+    }
+
+  }
+
+  returnValueRelacionDiagonal() {
+    return JSON.stringify(this.diagonal);
+  }
+  returnValueRelacionVertical() {
+    return JSON.stringify(this.vertical);
   }
 
 }
