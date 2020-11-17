@@ -43,10 +43,7 @@ export class AppComponent implements OnInit {
     let arr = new Array<any>();
     for (let i = 0; i < filas; i++) {
       // aqui se llenan las filas
-      arr.push({
-        filas: i + 1,
-        columnas: []
-      })
+      arr.push({ filas: i + 1, columnas: [] })
       for (let j = 0; j < columnas; j++) {
         // aqui se llenan las columnas
         arr[i].columnas.push(Math.floor((Math.random() * (1 - 0 + 1)) + 0));
@@ -55,23 +52,8 @@ export class AppComponent implements OnInit {
     }
     // esta es la matriz que se lista en el html
     this.matrizArmada = arr;
-    console.log(this.matrizArmada);
     //tamaño vector
     this.tamanovector = `El tamaño del array es de: ${filas} x ${columnas} = ${filas * columnas}`;
   }
 
-  numerosAleatoriosBinarios() {
-    // const array = new Array(5).fill(new Array(5))
-    // console.log(array)
-
-    // const data = [];
-    // data.push([{fila: 1,
-    // columnas: 5},5])
-    // console.log(data);
-    // let decimal = 255; // Este número lo iremos convirtiendo a todas las bases
-
-    // // Decimal a binario
-    // let decimalEnBinario = decimal.toString(2); // A la base 2
-    // console.log("El número decimal %s en binario es %s", decimal, decimalEnBinario);
-  }
 }
